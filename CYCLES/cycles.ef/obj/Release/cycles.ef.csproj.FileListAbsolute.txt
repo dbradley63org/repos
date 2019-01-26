@@ -1,0 +1,8 @@
+D:\DEV\REPOS\cycles\cycle.web\bin\cycles.ef.dll.config
+D:\DEV\REPOS\cycles\cycle.web\bin\cycles.ef.dll
+D:\DEV\REPOS\cycles\cycle.web\bin\cycles.ef.pdb
+D:\DEV\REPOS\cycles.ef\obj\Release\cycles.ef.csprojAssemblyReference.cache
+D:\DEV\REPOS\cycles.ef\obj\Release\cycles.ef.csproj.CoreCompileInputs.cache
+D:\DEV\REPOS\cycles.ef\obj\Release\cycles.ef.csproj.CopyComplete
+D:\DEV\REPOS\cycles.ef\obj\Release\cycles.ef.dll
+D:\DEV\REPOS\cycles.ef\obj\Release\cycles.ef.pdb

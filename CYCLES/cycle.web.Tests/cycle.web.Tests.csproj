@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cycle.web\cycle.web.csproj">
-      <Project>{D9216391-7393-46BF-9400-70075F34B53E}</Project>
+      <Project>{d9216391-7393-46bf-9400-70075f34b53e}</Project>
       <Name>cycle.web</Name>
     </ProjectReference>
   </ItemGroup>

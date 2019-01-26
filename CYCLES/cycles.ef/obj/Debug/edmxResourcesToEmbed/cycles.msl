@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="D010MCSModelStoreContainer" CdmEntityContainer="D010MCSEntities">
+    <EntitySetMapping Name="tmakes">
+      <EntityTypeMapping TypeName="D010MCSModel.tmake">
+        <MappingFragment StoreEntitySet="tmake">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="make_na" ColumnName="make_na" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tmodels">
+      <EntityTypeMapping TypeName="D010MCSModel.tmodel">
+        <MappingFragment StoreEntitySet="tmodel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="year_id" ColumnName="year_id" />
+          <ScalarProperty Name="make_id" ColumnName="make_id" />
+          <ScalarProperty Name="model_na" ColumnName="model_na" />
+          <ScalarProperty Name="style_id" ColumnName="style_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tservices">
+      <EntityTypeMapping TypeName="D010MCSModel.tservice">
+        <MappingFragment StoreEntitySet="tservice">
+          <ScalarProperty Name="srvc_id" ColumnName="srvc_id" />
+          <ScalarProperty Name="srvc_na" ColumnName="srvc_na" />
+          <ScalarProperty Name="crt_dt" ColumnName="crt_dt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tstyles">
+      <EntityTypeMapping TypeName="D010MCSModel.tstyle">
+        <MappingFragment StoreEntitySet="tstyle">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="style_na" ColumnName="style_na" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tyears">
+      <EntityTypeMapping TypeName="D010MCSModel.tyear">
+        <MappingFragment StoreEntitySet="tyear">
+          <ScalarProperty Name="yr" ColumnName="yr" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

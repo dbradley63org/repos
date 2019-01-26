@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="D010MCSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tmake">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="make_na" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tmodel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="make_id" Type="int" Nullable="false" />
+          <Property Name="model_na" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="style_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tservice">
+          <Key>
+            <PropertyRef Name="srvc_id" />
+          </Key>
+          <Property Name="srvc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="srvc_na" Type="nvarchar" MaxLength="150" />
+          <Property Name="crt_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tstyle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="style_na" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tyear">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yr" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tmodel_tmake">
+          <End Role="tmake" Type="Self.tmake" Multiplicity="1" />
+          <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tmake">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tmodel">
+              <PropertyRef Name="make_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tmodel_tyear">
+          <End Role="tyear" Type="Self.tyear" Multiplicity="1" />
+          <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tyear">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tmodel">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tmodeltstyle">
+          <End Role="tstyle" Type="Self.tstyle" Multiplicity="0..1" />
+          <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tstyle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tmodel">
+              <PropertyRef Name="style_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="D010MCSModelStoreContainer">
+          <EntitySet Name="tmake" EntityType="Self.tmake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmodel" EntityType="Self.tmodel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tservice" EntityType="Self.tservice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tstyle" EntityType="Self.tstyle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tyear" EntityType="Self.tyear" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tmodel_tmake" Association="Self.FK_tmodel_tmake">
+            <End Role="tmake" EntitySet="tmake" />
+            <End Role="tmodel" EntitySet="tmodel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tmodel_tyear" Association="Self.FK_tmodel_tyear">
+            <End Role="tyear" EntitySet="tyear" />
+            <End Role="tmodel" EntitySet="tmodel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tmodeltstyle" Association="Self.FK_tmodeltstyle">
+            <End Role="tstyle" EntitySet="tstyle" />
+            <End Role="tmodel" EntitySet="tmodel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="D010MCSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tmake">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="make_na" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tmodels" Relationship="Self.FK_tmodel_tmake" FromRole="tmake" ToRole="tmodel" />
+        </EntityType>
+        <EntityType Name="tmodel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <Property Name="make_id" Type="Int32" Nullable="false" />
+          <Property Name="model_na" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="style_id" Type="Int32" />
+          <NavigationProperty Name="tmake" Relationship="Self.FK_tmodel_tmake" FromRole="tmodel" ToRole="tmake" />
+          <NavigationProperty Name="tstyle" Relationship="Self.FK_tmodeltstyle" FromRole="tmodel" ToRole="tstyle" />
+          <NavigationProperty Name="tyear" Relationship="D010MCSModel.FK_tmodel_tyear" FromRole="tmodel" ToRole="tyear" />
+        </EntityType>
+        <EntityType Name="tservice">
+          <Key>
+            <PropertyRef Name="srvc_id" />
+          </Key>
+          <Property Name="srvc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="srvc_na" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="crt_dt" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tstyle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="style_na" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tmodels" Relationship="Self.FK_tmodeltstyle" FromRole="tstyle" ToRole="tmodel" />
+        </EntityType>
+        <Association Name="FK_tmodel_tmake">
+          <End Role="tmake" Type="Self.tmake" Multiplicity="1" />
+          <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tmake">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tmodel">
+              <PropertyRef Name="make_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tmodeltstyle">
+          <End Role="tstyle" Type="Self.tstyle" Multiplicity="0..1" />
+          <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tstyle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tmodel">
+              <PropertyRef Name="style_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="D010MCSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tmakes" EntityType="Self.tmake" />
+          <EntitySet Name="tmodels" EntityType="Self.tmodel" />
+          <EntitySet Name="tservices" EntityType="Self.tservice" />
+          <EntitySet Name="tstyles" EntityType="Self.tstyle" />
+          <AssociationSet Name="FK_tmodel_tmake" Association="Self.FK_tmodel_tmake">
+            <End Role="tmake" EntitySet="tmakes" />
+            <End Role="tmodel" EntitySet="tmodels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tmodeltstyle" Association="Self.FK_tmodeltstyle">
+            <End Role="tstyle" EntitySet="tstyles" />
+            <End Role="tmodel" EntitySet="tmodels" />
+          </AssociationSet>
+          <EntitySet Name="tyears" EntityType="D010MCSModel.tyear" />
+          <AssociationSet Name="FK_tmodel_tyear" Association="D010MCSModel.FK_tmodel_tyear">
+            <End Role="tyear" EntitySet="tyears" />
+            <End Role="tmodel" EntitySet="tmodels" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tyear">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tmodels" Relationship="D010MCSModel.FK_tmodel_tyear" FromRole="tyear" ToRole="tmodel" />
+        </EntityType>
+        <Association Name="FK_tmodel_tyear">
+          <End Type="D010MCSModel.tyear" Role="tyear" Multiplicity="1" />
+          <End Type="D010MCSModel.tmodel" Role="tmodel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tyear">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tmodel">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="D010MCSModelStoreContainer" CdmEntityContainer="D010MCSEntities">
+          <EntitySetMapping Name="tmakes">
+            <EntityTypeMapping TypeName="D010MCSModel.tmake">
+              <MappingFragment StoreEntitySet="tmake">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="make_na" ColumnName="make_na" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmodels">
+            <EntityTypeMapping TypeName="D010MCSModel.tmodel">
+              <MappingFragment StoreEntitySet="tmodel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="make_id" ColumnName="make_id" />
+                <ScalarProperty Name="model_na" ColumnName="model_na" />
+                <ScalarProperty Name="style_id" ColumnName="style_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tservices">
+            <EntityTypeMapping TypeName="D010MCSModel.tservice">
+              <MappingFragment StoreEntitySet="tservice">
+                <ScalarProperty Name="srvc_id" ColumnName="srvc_id" />
+                <ScalarProperty Name="srvc_na" ColumnName="srvc_na" />
+                <ScalarProperty Name="crt_dt" ColumnName="crt_dt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tstyles">
+            <EntityTypeMapping TypeName="D010MCSModel.tstyle">
+              <MappingFragment StoreEntitySet="tstyle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="style_na" ColumnName="style_na" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tyears">
+            <EntityTypeMapping TypeName="D010MCSModel.tyear">
+              <MappingFragment StoreEntitySet="tyear">
+                <ScalarProperty Name="yr" ColumnName="yr" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

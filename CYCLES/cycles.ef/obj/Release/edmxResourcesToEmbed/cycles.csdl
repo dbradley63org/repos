@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="D010MCSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tmake">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="make_na" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tmodels" Relationship="Self.FK_tmodel_tmake" FromRole="tmake" ToRole="tmodel" />
+  </EntityType>
+  <EntityType Name="tmodel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="year_id" Type="Int32" Nullable="false" />
+    <Property Name="make_id" Type="Int32" Nullable="false" />
+    <Property Name="model_na" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="style_id" Type="Int32" />
+    <NavigationProperty Name="tmake" Relationship="Self.FK_tmodel_tmake" FromRole="tmodel" ToRole="tmake" />
+    <NavigationProperty Name="tstyle" Relationship="Self.FK_tmodeltstyle" FromRole="tmodel" ToRole="tstyle" />
+    <NavigationProperty Name="tyear" Relationship="D010MCSModel.FK_tmodel_tyear" FromRole="tmodel" ToRole="tyear" />
+  </EntityType>
+  <EntityType Name="tservice">
+    <Key>
+      <PropertyRef Name="srvc_id" />
+    </Key>
+    <Property Name="srvc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="srvc_na" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="crt_dt" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tstyle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="style_na" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tmodels" Relationship="Self.FK_tmodeltstyle" FromRole="tstyle" ToRole="tmodel" />
+  </EntityType>
+  <Association Name="FK_tmodel_tmake">
+    <End Role="tmake" Type="Self.tmake" Multiplicity="1" />
+    <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tmake">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tmodel">
+        <PropertyRef Name="make_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tmodeltstyle">
+    <End Role="tstyle" Type="Self.tstyle" Multiplicity="0..1" />
+    <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tstyle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tmodel">
+        <PropertyRef Name="style_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="D010MCSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tmakes" EntityType="Self.tmake" />
+    <EntitySet Name="tmodels" EntityType="Self.tmodel" />
+    <EntitySet Name="tservices" EntityType="Self.tservice" />
+    <EntitySet Name="tstyles" EntityType="Self.tstyle" />
+    <AssociationSet Name="FK_tmodel_tmake" Association="Self.FK_tmodel_tmake">
+      <End Role="tmake" EntitySet="tmakes" />
+      <End Role="tmodel" EntitySet="tmodels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tmodeltstyle" Association="Self.FK_tmodeltstyle">
+      <End Role="tstyle" EntitySet="tstyles" />
+      <End Role="tmodel" EntitySet="tmodels" />
+    </AssociationSet>
+    <EntitySet Name="tyears" EntityType="D010MCSModel.tyear" />
+    <AssociationSet Name="FK_tmodel_tyear" Association="D010MCSModel.FK_tmodel_tyear">
+      <End Role="tyear" EntitySet="tyears" />
+      <End Role="tmodel" EntitySet="tmodels" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tyear">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="yr" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tmodels" Relationship="D010MCSModel.FK_tmodel_tyear" FromRole="tyear" ToRole="tmodel" />
+  </EntityType>
+  <Association Name="FK_tmodel_tyear">
+    <End Type="D010MCSModel.tyear" Role="tyear" Multiplicity="1" />
+    <End Type="D010MCSModel.tmodel" Role="tmodel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tyear">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tmodel">
+        <PropertyRef Name="year_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

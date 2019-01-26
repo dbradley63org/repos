@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b487343750a4182887d7ff72a2dbb25" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="D010MCSModel.tmake" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="D010MCSModel.tmodel" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="D010MCSModel.tservice" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="D010MCSModel.tstyle" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="D010MCSModel.FK_tmodel_tmake" ManuallyRouted="false" />
+        <AssociationConnector Association="D010MCSModel.FK_tmodeltstyle" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="D010MCSModel.tyear" Width="1.5" PointX="0.75" PointY="7.5" />
+        <AssociationConnector Association="D010MCSModel.FK_tmodel_tyear" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

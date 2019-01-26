@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="D010MCSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tmake">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="make_na" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tmodel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="year_id" Type="int" Nullable="false" />
+    <Property Name="make_id" Type="int" Nullable="false" />
+    <Property Name="model_na" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="style_id" Type="int" />
+  </EntityType>
+  <EntityType Name="tservice">
+    <Key>
+      <PropertyRef Name="srvc_id" />
+    </Key>
+    <Property Name="srvc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="srvc_na" Type="nvarchar" MaxLength="150" />
+    <Property Name="crt_dt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tstyle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="style_na" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tyear">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="yr" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tmodel_tmake">
+    <End Role="tmake" Type="Self.tmake" Multiplicity="1" />
+    <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tmake">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tmodel">
+        <PropertyRef Name="make_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tmodel_tyear">
+    <End Role="tyear" Type="Self.tyear" Multiplicity="1" />
+    <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tyear">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tmodel">
+        <PropertyRef Name="year_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tmodeltstyle">
+    <End Role="tstyle" Type="Self.tstyle" Multiplicity="0..1" />
+    <End Role="tmodel" Type="Self.tmodel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tstyle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tmodel">
+        <PropertyRef Name="style_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="D010MCSModelStoreContainer">
+    <EntitySet Name="tmake" EntityType="Self.tmake" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tmodel" EntityType="Self.tmodel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tservice" EntityType="Self.tservice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tstyle" EntityType="Self.tstyle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tyear" EntityType="Self.tyear" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tmodel_tmake" Association="Self.FK_tmodel_tmake">
+      <End Role="tmake" EntitySet="tmake" />
+      <End Role="tmodel" EntitySet="tmodel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tmodel_tyear" Association="Self.FK_tmodel_tyear">
+      <End Role="tyear" EntitySet="tyear" />
+      <End Role="tmodel" EntitySet="tmodel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tmodeltstyle" Association="Self.FK_tmodeltstyle">
+      <End Role="tstyle" EntitySet="tstyle" />
+      <End Role="tmodel" EntitySet="tmodel" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
