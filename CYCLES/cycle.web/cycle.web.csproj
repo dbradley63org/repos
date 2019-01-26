@@ -294,7 +294,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cycles.ef\cycles.ef.csproj">
+    <ProjectReference Include="..\cycles.ef\cycles.ef.csproj">
       <Project>{79704d85-3c85-4807-80f8-8026b904ffbd}</Project>
       <Name>cycles.ef</Name>
     </ProjectReference>
