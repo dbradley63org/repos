@@ -1,0 +1,35 @@
+﻿@model cycles.ef.tservice
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tservice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.srvc_na)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.srvc_na)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crt_dt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crt_dt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.srvc_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

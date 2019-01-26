@@ -1,0 +1,25 @@
+﻿@model cycles.ef.tyear
+
+@{
+	ViewBag.Title = "Year";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Title</h2>
+<h4>Details</h4>
+<div>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.yr)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.yr)
+		</dd>
+
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,50 @@
+﻿@model cycles.ef.tmodel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tmodel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.model_na)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.model_na)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tmake.make_na)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tmake.make_na)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tyear.yr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tyear.yr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tstyle.style_na)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tstyle.style_na)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\DEV\\REPOS\\cycles\\cycle\.web\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\DEV\\REPOS\\cycles\\cycle\.web\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=db-pc;Initial Catalog=D010MCS;Persist Security Info=True;User ID=dbradley;Password=Programmer@1" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\DEV\\REPOS\\cycles\\cycle\.web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="D010MCSEntities-Web.config Connection String" description="" value="metadata=res://*/cycles.csdl|res://*/cycles.ssdl|res://*/cycles.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=db-pc;initial catalog=D010MCS;user id=dbradley;password=Programmer@1;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\DEV\\REPOS\\cycles\\cycle\.web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='D010MCSEntities']/@connectionString" />
+  </parameter>
+</parameters>

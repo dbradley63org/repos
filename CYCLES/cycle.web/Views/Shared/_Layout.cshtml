@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				@*@Html.ActionLink("Cycles Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+				<a href="~/Home"><img style="padding-top: 8px; background-color: transparent" border="0" alt="Cycles" src="~/Content/th.jpg" " width="50" height="50"></a>
+
+		
+
+</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("My Cycles", "Index", "tmyccycles", new {Cid = this }, new {tag="tooltip" })</li>
+					<li>@Html.ActionLink("Services", "Index", "tservices")</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							Administration
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>@Html.ActionLink("Years", "Index", "tyears")</li>
+							<li>@Html.ActionLink("Makes", "Index", "tmakes")</li>
+							<li>@Html.ActionLink("Models", "Index", "tmodels")</li>
+							<li>@Html.ActionLink("Styles", "Index", "tstyles")</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							Help
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+							<li>@Html.ActionLink("About", "About", "Home")</li>
+						</ul>
+					</li>
+				</ul>
+				@Html.Partial("_LoginPartial")
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - Cycles</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('[tag="tooltip"]').tooltip({
+				placement: 'bottom',
+				title: "<div style=\"background-color: blue; \"><h4>Save your bikes here.</h4></div>",
+				animation: true,
+				delay: {show:300, hide:800},
+				html: true
+			});
+		});
+	</script>
+
+
+
+
+
+
+</body>
+</html>
