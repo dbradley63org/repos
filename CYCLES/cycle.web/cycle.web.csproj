@@ -339,7 +339,7 @@
           <IISUrl>http://localhost:54254/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>True</UseCustomServer>
-          <CustomServerUrl>https://github.com/dbradley63org/repos.git</CustomServerUrl>
+          <CustomServerUrl>https://github.com/dbradley63org/repos/cycles.git</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
